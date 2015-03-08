@@ -7,7 +7,7 @@ public class ObstacleCube : MonoBehaviour {
 	void Start () {
 		transform.localScale = new Vector3(0.1f, 0.1f, 1f);
 		transform.Translate (new Vector3 (4f,0.1f,Random.Range(-1f, 1f)));
-		rigidbody.useGravity = false;
+		GetComponent<Rigidbody>().useGravity = false;
 	}
 	
 	// Update is called once per frame
