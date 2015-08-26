@@ -14,7 +14,7 @@ public class ShapeChange : MonoBehaviour {
 		lineRenderer.material = matTheLine;
 		//Debug.Log("after assignment, current Mat " + lineRenderer.material.name);
 		lineRenderer.SetVertexCount(lengthOfLineRenderer);
-		lineRenderer.SetColors(Color.white, Color.white);
+		//lineRenderer.SetColors(Color.white, Color.white);
 		lineRenderer.SetWidth(0.05f, 0.05f);
 		lineRenderer.useWorldSpace = false;
 		//lineRenderer.transform.Translate (new Vector3 (-3.0f, 0f, 0f)); 
