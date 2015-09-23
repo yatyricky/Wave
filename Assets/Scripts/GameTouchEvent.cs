@@ -2,20 +2,24 @@
 using System.Collections;
 
 public class GameTouchEvent : MonoBehaviour {
-	private bool moving;
+	private int moving;
 	public GameObject obstacleCube;
+	public float speed;
+	public Camera mainCamera;
 
 	// Use this for initialization
 	void Start () {
 		//Debug.Log ("Hello world");
-		moving = false;
+		moving = 0;
 		StartCoroutine(RespawnObstacleCube());
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (moving) {
-			ShapeChange.phase += 0.1F;
+		if (moving > 0) {
+			ShapeChange.phase += speed;
+		} else if (moving < 0) {
+			ShapeChange.phase -= speed;
 		}
 
 		//float current = Time.time;
@@ -41,12 +45,20 @@ public class GameTouchEvent : MonoBehaviour {
 
 	void OnMouseDown() {
 		//Debug.Log("Mouse down");
-		moving = true;
+
+		Vector3 worldLoc = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+
+		if (worldLoc.x > 0) {
+			moving = 1;
+		} else {
+			moving = -1;
+		}
+		//Debug.Log("x:"+worldLoc.x+"y:"+worldLoc.y+"z:"+worldLoc.z);
 	}
 
 	void OnMouseUp() {
 		//Debug.Log("Mouse up");
-		moving = false;
+		moving = 0;
 	}
 
 	/*
